@@ -61,6 +61,20 @@
       transform: scale(1.05);
     }
 
+    /* Discord ikon a bal felső sarokban */
+    .discord-icon {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      max-width: 140px; /* nagyobb méret */
+      height: auto;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .discord-icon:hover {
+      transform: scale(1.2);
+    }
+
     @media (max-width: 768px) {
       .btn {
         padding: 16px 64px;
@@ -69,6 +83,9 @@
       .logo {
         width: 120px;
         height: 120px;
+      }
+      .discord-icon {
+        max-width: 110px;
       }
     }
 
@@ -81,11 +98,18 @@
         width: 100px;
         height: 100px;
       }
+      .discord-icon {
+        max-width: 90px;
+      }
     }
 
   </style>
 </head>
 <body>
+  <a href="https://discord.gg/4SMf3BUh" target="_blank" rel="noopener">
+    <img class="discord-icon" src="https://img001.prntscr.com/file/img001/2eTkzsNJSnaW7rIQKfyTmA.png" alt="Discord" />
+  </a>
+
   <div class="center">
     <a class="btn" href="https://pastebin.com/UnmXbrUH" target="_blank" rel="noopener">Download</a>
     <img class="logo" src="https://img001.prntscr.com/file/img001/sWSwglrzSja3PHvHRkMzhw.png" alt="Logo" />
