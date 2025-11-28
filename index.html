@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HFTPCV1 - by helper</title>
   <link rel="icon" type="image/png" href="https://i.ibb.co/R4V9pTv/HFTP-Icon.png">
+
   <style>
-    
     body {
       margin: 0;
       height: 100vh;
@@ -14,6 +14,7 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
+      font-family: Arial, sans-serif;
     }
 
     .center {
@@ -28,7 +29,6 @@
       display: inline-block;
       padding: 20px 80px;
       font-size: 22px;
-      font-family: Arial, sans-serif;
       font-weight: 600;
       background-color: #007bff;
       color: #ffffff;
@@ -39,13 +39,13 @@
       transition: all .25s ease;
       box-shadow: 0 8px 24px rgba(0,0,0,.2);
     }
+
     .btn:hover {
       background-color: #ffffff;
       color: #000000;
     }
 
     .logo {
-      position: relative;
       display: block;
       margin: 30px auto 0 auto;
       width: 150px;
@@ -61,17 +61,61 @@
       transform: scale(1.05);
     }
 
-    .discord-icon {
+    .dropdown {
       position: absolute;
       top: 20px;
       left: 20px;
-      max-width: 140px;
-      height: auto;
-      cursor: pointer;
-      transition: transform 0.3s ease;
+      z-index: 10;
     }
-    .discord-icon:hover {
-      transform: scale(1.2);
+
+    .arrow {
+      font-size: 70px;
+      cursor: pointer;
+      color: white;
+      user-select: none;
+      background: rgba(0,0,0,0.6);
+      width: 90px;
+      height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      box-shadow: 0 0 25px rgba(255,255,255,0.6);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: pulse 1.6s infinite;
+    }
+
+    .arrow:hover {
+      box-shadow: 0 0 40px rgba(255,255,255,0.9);
+      transform: scale(1.1);
+    }
+
+    .arrow.rotate {
+      transform: rotate(180deg);
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 15px rgba(255,255,255,0.4); }
+      50% { box-shadow: 0 0 35px rgba(255,255,255,0.9); }
+      100% { box-shadow: 0 0 15px rgba(255,255,255,0.4); }
+    }
+
+    #discordBox {
+      margin-top: 12px;
+      display: none;
+      align-items: center;
+      gap: 10px;
+      background: rgba(0,0,0,0.75);
+      padding: 10px 15px;
+      border-radius: 12px;
+      text-decoration: none;
+      color: white;
+      box-shadow: 0 5px 15px rgba(0,0,0,.3);
+    }
+
+    #discordBox img {
+      width: 32px;
+      height: 32px;
     }
 
     @media (max-width: 768px) {
@@ -83,8 +127,10 @@
         width: 120px;
         height: 120px;
       }
-      .discord-icon {
-        max-width: 110px;
+      .arrow {
+        font-size: 60px;
+        width: 80px;
+        height: 80px;
       }
     }
 
@@ -97,21 +143,44 @@
         width: 100px;
         height: 100px;
       }
-      .discord-icon {
-        max-width: 90px;
+      .arrow {
+        font-size: 52px;
+        width: 72px;
+        height: 72px;
       }
     }
-
   </style>
 </head>
+
 <body>
-  <a href="https://discord.gg/kDQPb8bhYz" target="_blank" rel="noopener">
-    <img class="discord-icon" src="https://cdn-icons-png.flaticon.com/512/3670/3670157.png" alt="Discord" />
-  </a>
+
+  <div class="dropdown">
+    <div class="arrow" onclick="toggleDiscord()">⬇</div>
+    <a id="discordBox" href="https://discord.gg/kDQPb8bhYz" target="_blank" rel="noopener">
+      <img src="https://cdn-icons-png.flaticon.com/512/3670/3670157.png">
+      <span>DISCORD SERVER</span>
+    </a>
+  </div>
 
   <div class="center">
     <a class="btn" href="https://pastebin.com/UnmXbrUH" target="_blank" rel="noopener">Download</a>
     <img class="logo" src="https://i.imgur.com/tk0Byh5.png" alt="Logo" />
   </div>
+
+  <script>
+    function toggleDiscord() {
+      const box = document.getElementById("discordBox");
+      const arrow = document.querySelector(".arrow");
+
+      if (box.style.display === "flex") {
+        box.style.display = "none";
+        arrow.classList.remove("rotate");
+      } else {
+        box.style.display = "flex";
+        arrow.classList.add("rotate");
+      }
+    }
+  </script>
+
 </body>
 </html>
