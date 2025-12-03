@@ -64,9 +64,11 @@
     .dropdown {
       position: absolute;
       top: 20px;
-      left: 20px;
       z-index: 10;
     }
+
+    .dropdown-left { left: 20px; }
+    .dropdown-right { right: 20px; }
 
     .arrow {
       font-size: 70px;
@@ -100,7 +102,7 @@
       100% { box-shadow: 0 0 15px rgba(255,255,255,0.4); }
     }
 
-    #discordBox {
+    #discordBox, #kogamaBox {
       margin-top: 12px;
       display: none;
       align-items: center;
@@ -113,7 +115,7 @@
       box-shadow: 0 5px 15px rgba(0,0,0,.3);
     }
 
-    #discordBox img {
+    #discordBox img, #kogamaBox img {
       width: 32px;
       height: 32px;
     }
@@ -154,11 +156,19 @@
 
 <body>
 
-  <div class="dropdown">
+  <div class="dropdown dropdown-left">
     <div class="arrow" onclick="toggleDiscord()">⬇</div>
     <a id="discordBox" href="https://discord.gg/kDQPb8bhYz" target="_blank" rel="noopener">
       <img src="https://cdn-icons-png.flaticon.com/512/3670/3670157.png">
       <span>DISCORD SERVER</span>
+    </a>
+  </div>
+
+  <div class="dropdown dropdown-right">
+    <div class="arrow" onclick="toggleKogama()">⬇</div>
+    <a id="kogamaBox" href="https://www.kogama.com/profile/22944023/" target="_blank" rel="noopener">
+      <img src="https://i.imgur.com/E1sxOC3.jpeg">
+      <span>KOGAMA PROFILE</span>
     </a>
   </div>
 
@@ -170,7 +180,20 @@
   <script>
     function toggleDiscord() {
       const box = document.getElementById("discordBox");
-      const arrow = document.querySelector(".arrow");
+      const arrow = document.querySelector(".dropdown-left .arrow");
+
+      if (box.style.display === "flex") {
+        box.style.display = "none";
+        arrow.classList.remove("rotate");
+      } else {
+        box.style.display = "flex";
+        arrow.classList.add("rotate");
+      }
+    }
+
+    function toggleKogama() {
+      const box = document.getElementById("kogamaBox");
+      const arrow = document.querySelector(".dropdown-right .arrow");
 
       if (box.style.display === "flex") {
         box.style.display = "none";
