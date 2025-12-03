@@ -32,11 +32,10 @@
       font-weight: 600;
       background-color: #007bff;
       color: #ffffff;
-      border: none;
       border-radius: 10px;
       text-decoration: none;
       cursor: pointer;
-      transition: all .25s ease;
+      transition: 0.25s;
       box-shadow: 0 8px 24px rgba(0,0,0,.2);
     }
 
@@ -53,7 +52,7 @@
       border-radius: 50%;
       object-fit: cover;
       box-shadow: 0 6px 20px rgba(0,0,0,.25);
-      transition: all 0.3s ease;
+      transition: 0.3s;
     }
 
     .logo:hover {
@@ -65,6 +64,8 @@
       position: absolute;
       top: 20px;
       z-index: 10;
+      width: 90px;
+      height: 90px;
     }
 
     .dropdown-left { left: 20px; }
@@ -83,20 +84,12 @@
       justify-content: center;
       border-radius: 50%;
       box-shadow: 0 0 25px rgba(255,255,255,0.6);
-      transition: box-shadow 0.3s ease;
+      transition: 0.3s;
       animation: pulse 1.6s infinite;
-    }
-
-    .arrow:hover {
-      box-shadow: 0 0 40px rgba(255,255,255,0.9);
     }
 
     .arrow.rotate {
       transform: rotate(180deg);
-    }
-
-    .dropdown-right .arrow.rotate {
-      transform: none;
     }
 
     @keyframes pulse {
@@ -105,54 +98,47 @@
       100% { box-shadow: 0 0 15px rgba(255,255,255,0.4); }
     }
 
-    #discordBox, #kogamaBox {
-      margin-top: 12px;
+    /* ✅ CSAK A SZÖVEG POZÍCIÓJA VÁLTOZIK */
+    #discordBox {
+      position: absolute;
+      top: 105px;
+      left: 110px;   /* ← jobbra tolva a bal oldali szöveg */
       display: none;
       align-items: center;
       gap: 10px;
       background: rgba(0,0,0,0.75);
-      padding: 10px 15px;
+      padding: 12px 20px;
       border-radius: 12px;
       text-decoration: none;
       color: white;
       box-shadow: 0 5px 15px rgba(0,0,0,.3);
+      white-space: nowrap;
+      width: 240px;
+      justify-content: center;
+    }
+
+    #kogamaBox {
+      position: absolute;
+      top: 105px;
+      right: 110px;  /* ← balra tolva a jobb oldali szöveg */
+      display: none;
+      align-items: center;
+      gap: 10px;
+      background: rgba(0,0,0,0.75);
+      padding: 12px 20px;
+      border-radius: 12px;
+      text-decoration: none;
+      color: white;
+      box-shadow: 0 5px 15px rgba(0,0,0,.3);
+      white-space: nowrap;
+      width: 240px;
+      justify-content: center;
     }
 
     #discordBox img, #kogamaBox img {
       width: 32px;
       height: 32px;
-    }
-
-    @media (max-width: 768px) {
-      .btn {
-        padding: 16px 64px;
-        font-size: 20px;
-      }
-      .logo {
-        width: 120px;
-        height: 120px;
-      }
-      .arrow {
-        font-size: 60px;
-        width: 80px;
-        height: 80px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .btn {
-        padding: 12px 48px;
-        font-size: 18px;
-      }
-      .logo {
-        width: 100px;
-        height: 100px;
-      }
-      .arrow {
-        font-size: 52px;
-        width: 72px;
-        height: 72px;
-      }
+      border-radius: 6px;
     }
   </style>
 </head>
@@ -161,47 +147,38 @@
 
   <div class="dropdown dropdown-left">
     <div class="arrow" onclick="toggleDiscord()">⬇</div>
-    <a id="discordBox" href="https://discord.gg/kDQPb8bhYz" target="_blank" rel="noopener">
-      <img src="https://cdn-icons-png.flaticon.com/512/3670/3670157.png">
-      <span>DISCORD SERVER</span>
-    </a>
   </div>
+  <a id="discordBox" href="https://discord.gg/kDQPb8bhYz" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/3670/3670157.png">
+    <span>DISCORD SERVER</span>
+  </a>
 
   <div class="dropdown dropdown-right">
     <div class="arrow" onclick="toggleKogama()">⬇</div>
-    <a id="kogamaBox" href="https://www.kogama.com/profile/22944023/" target="_blank" rel="noopener">
-      <img src="https://i.imgur.com/E1sxOC3.jpeg">
-      <span>KOGAMA PROFILE</span>
-    </a>
   </div>
+  <a id="kogamaBox" href="https://www.kogama.com/profile/22944023/" target="_blank">
+    <img src="https://i.imgur.com/E1sxOC3.jpeg">
+    <span>KOGAMA PROFILE</span>
+  </a>
 
   <div class="center">
-    <a class="btn" href="https://pastebin.com/UnmXbrUH" target="_blank" rel="noopener">Download</a>
-    <img class="logo" src="https://i.imgur.com/tk0Byh5.png" alt="Logo" />
+    <a class="btn" href="https://pastebin.com/UnmXbrUH" target="_blank">Download</a>
+    <img class="logo" src="https://i.imgur.com/tk0Byh5.png">
   </div>
 
   <script>
     function toggleDiscord() {
       const box = document.getElementById("discordBox");
       const arrow = document.querySelector(".dropdown-left .arrow");
-
-      if (box.style.display === "flex") {
-        box.style.display = "none";
-        arrow.classList.remove("rotate");
-      } else {
-        box.style.display = "flex";
-        arrow.classList.add("rotate");
-      }
+      box.style.display = box.style.display === "flex" ? "none" : "flex";
+      arrow.classList.toggle("rotate");
     }
 
     function toggleKogama() {
       const box = document.getElementById("kogamaBox");
-
-      if (box.style.display === "flex") {
-        box.style.display = "none";
-      } else {
-        box.style.display = "flex";
-      }
+      const arrow = document.querySelector(".dropdown-right .arrow");
+      box.style.display = box.style.display === "flex" ? "none" : "flex";
+      arrow.classList.toggle("rotate");
     }
   </script>
 
