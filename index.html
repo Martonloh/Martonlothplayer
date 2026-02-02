@@ -1,102 +1,236 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-  <meta charset="UTF-8">
-  <title>Csepel - Lóth Márton 8.b</title>
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="https://i.imgur.com/1gzEe3K.png">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #f9f9f9;
-      color: #222;
-    }
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 40px 20px;
-    }
-    h1 {
-      text-align: center;
-      margin-bottom: 10px;
-      font-size: 36px;
-      text-transform: uppercase;
-    }
-    .subtitle {
-      text-align: center;
-      font-size: 20px;
-      color: #555;
-      margin-bottom: 60px;
-    }
-    .section {
-      margin-bottom: 80px;
-    }
-    .section img {
-      width: 100%;
-      border-radius: 8px;
-      margin-bottom: 15px;
-    }
-    .section h2 {
-      margin-bottom: 15px;
-    }
-    .section p {
-      line-height: 1.6;
-      font-size: 18px;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HFTPCV1 - by helper</title>
+<link rel="icon" type="image/png" href="https://i.ibb.co/R4V9pTv/HFTP-Icon.png">
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://i.imgur.com/ZyZ2LQz.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+.center {
+  position: absolute;
+  left: 50%;
+  top: 65%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.btn {
+  display: inline-block;
+  padding: 20px 80px;
+  font-size: 22px;
+  font-weight: 600;
+  background-color: #007bff;
+  color: #ffffff;
+  border-radius: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.25s;
+  box-shadow: 0 8px 24px rgba(0,0,0,.2);
+  margin-bottom: 15px;
+}
+
+.btn:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.logo {
+  display: block;
+  margin: 30px auto 0 auto;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 6px 20px rgba(0,0,0,.25);
+  transition: 0.3s;
+}
+
+.logo:hover {
+  box-shadow: 0 0 0 8px white, 0 6px 20px rgba(0,0,0,.25);
+  transform: scale(1.05);
+}
+
+.scrollText {
+  padding: 15px 30px;
+  background: black;
+  color: white;
+  font-weight: bold;
+  font-size: 22px;
+  border-radius: 12px;
+  cursor: pointer;
+  display: inline-block;
+  margin-top: 15px;
+  transition: transform 0.2s, background 0.2s, color 0.2s;
+}
+.scrollText:hover {
+  transform: scale(1.05);
+  background: white;
+  color: black;
+}
+
+.dropdown {
+  position: absolute;
+  top: 20px;
+  z-index: 10;
+  width: 90px;
+  height: 90px;
+}
+
+.dropdown-left { left: 20px; }
+.dropdown-right { right: 20px; }
+
+.arrow {
+  font-size: 70px;
+  cursor: pointer;
+  color: white;
+  user-select: none;
+  background: rgba(0,0,0,0.6);
+  width: 90px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: 0 0 25px rgba(255,255,255,0.6);
+  transition: 0.3s;
+  animation: pulse 1.6s infinite;
+}
+
+.arrow.rotate { transform: rotate(180deg); }
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 15px rgba(255,255,255,0.4); }
+  50% { box-shadow: 0 0 35px rgba(255,255,255,0.9); }
+  100% { box-shadow: 0 0 15px rgba(255,255,255,0.4); }
+}
+
+#discordBox {
+  position: absolute;
+  top: 105px;
+  left: 110px;
+  display: none;
+  align-items: center;
+  gap: 10px;
+  background: rgba(0,0,0,0.75);
+  padding: 12px 20px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: white;
+  box-shadow: 0 5px 15px rgba(0,0,0,.3);
+  white-space: nowrap;
+  width: 240px;
+  justify-content: center;
+}
+
+#kogamaBox {
+  position: absolute;
+  top: 105px;
+  right: 110px;
+  display: none;
+  align-items: center;
+  gap: 10px;
+  background: rgba(0,0,0,0.75);
+  padding: 12px 20px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: white;
+  box-shadow: 0 5px 15px rgba(0,0,0,.3);
+  white-space: nowrap;
+  width: 240px;
+  justify-content: center;
+}
+
+#discordBox img, #kogamaBox img { width: 32px; height: 32px; border-radius: 6px; }
+
+#videoSection {
+  display: block;
+  margin-top: 120vh;
+  width: 80%;
+  max-width: 900px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#videoSection iframe {
+  width: 100%;
+  height: 500px;
+  border-radius: 16px;
+  box-shadow: 0 0 40px rgba(0,0,0,0.6);
+  border: none;
+}
+</style>
 </head>
 <body>
-  <div class="container">
-    <h1>LÓTH MÁRTON 8.B</h1>
-    <p class="subtitle">Csepel története</p>
- 
-    <div class="section">
-      <img src="https://i.imgur.com/Hly4rvk.png" alt="Tamariska-domb Természetvédelmi Terület">
-      <h2>Tamariska-domb Természetvédelmi Terület</h2>
-      <p>
-        Számos védett növény- és állatfaj található itt. A domb alatt található egy bunker, amely a két világháború között épült.  
-        Ez a terület kellemes sétalehetőségeket kínál, vannak itt piknikezőhelyek padokkal, népszerű a kutyások és a családok körében.
-      </p>
-    </div>
- 
-    <div class="section">
-      <img src="https://i.imgur.com/hfZ1Xyd.png" alt="Kis-Duna-öböl tanösvény">
-      <h2>Kis-Duna-öböl tanösvény</h2>
-      <p>
-        A Duna-part mentén csodás tanösvény található: mocsári teknősök is gyakran megfigyelhetők, jókat lehet itt sétálni és a természetet élvezni.  
-        A Kolonics György sétány mentén található a vadregényes Kis-Duna-öböl, amely különleges természeti értékeket őriz, nemcsak vízinövényfajok és ligeterdők találhatók itt, hanem élénk állatvilága is van: vízi rovarok, madarak és halak.
-      </p>
-    </div>
- 
-    <div class="section">
-      <img src="https://i.imgur.com/LaLaLGE.png" alt="Kolonics György sétány">
-      <h2>Kolonics György sétány</h2>
-      <p>
-        Csepel egyik legjobban őrzött titka, a fiatalon meghalt világbajnok kenusról nevezték el. Kb. 5 kilométer hosszú, egyedülálló a fővárosban: a Dunához ilyen közel, ilyen hosszú kiépített sétányt sehol máshol nem találni Budapesten.
-      </p>
-    </div>
- 
-    <div class="section">
-      <img src="https://i.imgur.com/PLCBLnJ.png" alt="Daru-domb">
-      <h2>Daru-domb</h2>
-      <p>
-        Nagyon népszerű a csepeli lakosok körében: van itt fitneszpark, BMX-pálya, sokféle sportolási lehetőség. Legfőbb dísze a domb tetején magasodó Ősi elődeink szoborcsoport.
-      </p>
-    </div>
- 
-    <div class="section">
-      <img src="https://i.imgur.com/h31IhYS.png" alt="Kisboldogasszony-templom">
-      <h2>Kisboldogasszony-templom, Szent Imre tér</h2>
-      <p>
-        A Csepel központjában, a Szent Imre téren található az egyik legrégebbi épület, amely 1857 és 1862 között épült.  
-        Csepeli Helytörténeti Gyűjtemény: A Királyerdei Művelődési Ház épületében található állandó kiállítás bemutatja a kerület múltját, valamint a híres Weiss Manfréd gyár történetét és termékeit.  
-        Csepel Galéria: Az 1970 óta működő galéria a kortárs magyar művészek képeit mutatja be.  
-        Csepeli Munkásotthon: Ma is Csepel kulturális központja, több mint 100 éves múltra tekint vissza, aktív közösségi térként és rendezvényhelyszínként működik. Én is sokszor járok a Szent Imre téren és sokszor látom a templomot.
-      </p>
-    </div>
- 
-  </div>
+
+<div class="background"></div>
+
+<div class="dropdown dropdown-left">
+  <div class="arrow" onclick="toggleDiscord()">⬇</div>
+</div>
+<a id="discordBox" href="https://discord.gg/kDQPb8bhYz" target="_blank">
+  <img src="https://cdn-icons-png.flaticon.com/512/3670/3670157.png">
+  <span>DISCORD SERVER</span>
+</a>
+
+<div class="dropdown dropdown-right">
+  <div class="arrow" onclick="toggleKogama()">⬇</div>
+</div>
+<a id="kogamaBox" href="https://www.kogama.com/profile/22944023/" target="_blank">
+  <img src="https://i.imgur.com/E1sxOC3.jpeg">
+  <span>KOGAMA PROFILE</span>
+</a>
+
+<div class="center" id="intro">
+  <a class="btn" href="https://pastebin.com/UnmXbrUH" target="_blank">Download</a>
+  <img class="logo" src="https://i.imgur.com/tk0Byh5.png">
+  <div class="scrollText" onclick="scrollToVideo()">CHECK THE VIDEO</div>
+</div>
+
+<div id="videoSection">
+  <iframe src="https://www.youtube.com/embed/UHapQ3egfGc" allowfullscreen></iframe>
+</div>
+
+<script>
+function toggleDiscord() {
+  const box = document.getElementById("discordBox");
+  const arrow = document.querySelector(".dropdown-left .arrow");
+  box.style.display = box.style.display === "flex" ? "none" : "flex";
+  arrow.classList.toggle("rotate");
+}
+
+function toggleKogama() {
+  const box = document.getElementById("kogamaBox");
+  const arrow = document.querySelector(".dropdown-right .arrow");
+  box.style.display = box.style.display === "flex" ? "none" : "flex";
+  arrow.classList.toggle("rotate");
+}
+
+function scrollToVideo() {
+  const video = document.getElementById('videoSection');
+  video.scrollIntoView({behavior: 'smooth'});
+}
+</script>
+
 </body>
 </html>
- 
