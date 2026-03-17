@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Martonloth - Home</title>
 <link rel="icon" type="image/png" href="logo.png">
-
+ 
 <style>
 body {
   margin: 0;
@@ -13,7 +13,7 @@ body {
   scroll-behavior: smooth;
   overflow-x: hidden;
 }
-
+ 
 .background {
   position: fixed;
   top: 0;
@@ -27,7 +27,7 @@ body {
   z-index: -1;
   filter: brightness(35%);
 }
-
+ 
 .center {
   position: absolute;
   left: 50%;
@@ -35,7 +35,7 @@ body {
   transform: translate(-50%, -50%);
   text-align: center;
 }
-
+ 
 .btn {
   display: block;
   padding: 20px 80px;
@@ -56,7 +56,7 @@ body {
   position: relative;
   overflow: hidden;
 }
-
+ 
 .btn::before {
   content: "";
   position: absolute;
@@ -68,30 +68,30 @@ body {
   transition: transform 0.25s;
   z-index: 0;
 }
-
+ 
 .btn:hover::before {
   transform: scaleY(1);
 }
-
+ 
 .btn span {
   position: relative;
   z-index: 1;
   color: white;
   text-shadow: 0 0 6px black;
 }
-
+ 
 .btn:hover span {
   color: black;
   text-shadow: none;
 }
-
+ 
 .szoveg {
   color: white;
   font-size: 22px;
   margin-bottom: 8px;
   display: block;
 }
-
+ 
 .arrowCheck {
   margin-top:10px;
   color:white;
@@ -101,7 +101,7 @@ body {
   justify-content:center;
   gap:12px;
 }
-
+ 
 .checkBox{
   width:40px;
   height:40px;
@@ -113,13 +113,13 @@ body {
   justify-content:center;
   font_size:28px;
 }
-
+ 
 .checkBox img{
   width:100%;
   height:100%;
   object-fit:contain;
 }
-
+ 
 .dropdown {
   position: absolute;
   top: 20px;
@@ -128,10 +128,10 @@ body {
   height: 90px;
   display:none;
 }
-
+ 
 .dropdown-left { left: 20px; }
 .dropdown-right { right: 20px; }
-
+ 
 .arrow {
   font-size: 70px;
   cursor: pointer;
@@ -148,33 +148,33 @@ body {
   transition: 0.3s;
   animation: pulse 1.6s infinite;
 }
-
+ 
 .arrow.rotate { transform: rotate(180deg); }
-
+ 
 @keyframes pulse {
   0% { box-shadow: 0 0 15px rgba(255,255,255,0.4); }
   50% { box-shadow: 0 0 35px rgba(255,255,255,0.9); }
   100% { box-shadow: 0 0 15px rgba(255,255,255,0.4); }
 }
-
+ 
 .zoomIn {
   animation: zoomIn 1s forwards;
 }
-
+ 
 .zoomOut {
   animation: zoomOut 1s forwards;
 }
-
+ 
 @keyframes zoomIn {
   0% { transform: scale(0.1); opacity:0; }
   100% { transform: scale(1); opacity:1; }
 }
-
+ 
 @keyframes zoomOut {
   0% { transform: scale(1); opacity:1; }
   100% { transform: scale(0.1); opacity:0; }
 }
-
+ 
 #discordBox {
   position: absolute;
   top: 105px;
@@ -192,7 +192,7 @@ body {
   width: 240px;
   justify-content: center;
 }
-
+ 
 #kogamaBox {
   position: absolute;
   top: 105px;
@@ -210,13 +210,13 @@ body {
   width: 240px;
   justify-content: center;
 }
-
+ 
 #discordBox img, #kogamaBox img {
   width: 32px;
   height: 32px;
   border-radius: 6px;
 }
-
+ 
 #videoSection {
   display: block;
   margin-top: 120vh;
@@ -226,7 +226,7 @@ body {
   left: 50%;
   transform: translateX(-50%);
 }
-
+ 
 #videoSection iframe {
   width: 100%;
   height: 500px;
@@ -236,58 +236,58 @@ body {
 }
 </style>
 </head>
-
+ 
 <body>
-
+ 
 <div class="background"></div>
-
+ 
 <div class="dropdown dropdown-left" id="leftArrow">
   <div class="arrow" id="discordArrow" onclick="toggleDiscord()">⬇</div>
 </div>
-
+ 
 <a id="discordBox" href="https://discord.gg/kDQPb8bhYz" target="_blank">
   <img src="https://i.imgur.com/T7u2joC.png">
   <span>DISCORD SERVER</span>
 </a>
-
+ 
 <div class="dropdown dropdown-right" id="rightArrow">
   <div class="arrow" id="kogamaArrow" onclick="toggleKogama()">⬇</div>
 </div>
-
+ 
 <a id="kogamaBox" href="https://www.kogama.com/profile/22944023/" target="_blank">
   <img src="https://i.imgur.com/4uyqRH8.jpeg">
   <span>KOGAMA PROFILE</span>
 </a>
-
+ 
 <div class="center" id="intro">
-
+ 
 <span class="szoveg">By Martonloth</span>
-
-<a class="btn" href="" target="_blank">
+ 
+<a class="btn" "_blank">
 <span>GAMES</span>
 </a>
-
+ 
 <div class="btn" onclick="scrollToVideo()">
 <span>TUTORIAL</span>
 </div>
-
+ 
 <div class="arrowCheck">
 <span>My contact details</span>
 <div class="checkBox" onclick="toggleArrows()" id="checkBox"></div>
 </div>
-
+ 
 </div>
-
+ 
 <div id="videoSection">
 <iframe src="https://www.youtube.com/embed/UHapQ3egfGc" allowfullscreen></iframe>
 </div>
-
+ 
 <script>
-
+ 
 let arrowsEnabled=false;
-
+ 
 function toggleArrows(){
-
+ 
 const left=document.getElementById("leftArrow");
 const right=document.getElementById("rightArrow");
 const discord=document.getElementById("discordBox");
@@ -295,89 +295,89 @@ const kogama=document.getElementById("kogamaBox");
 const discordArrow=document.getElementById("discordArrow");
 const kogamaArrow=document.getElementById("kogamaArrow");
 const box=document.getElementById("checkBox");
-
+ 
 arrowsEnabled=!arrowsEnabled;
-
+ 
 if(arrowsEnabled){
-
+ 
 left.classList.remove("zoomOut");
 right.classList.remove("zoomOut");
-
+ 
 left.style.display="block";
 right.style.display="block";
-
+ 
 void left.offsetWidth;
 void right.offsetWidth;
-
+ 
 left.classList.add("zoomIn");
 right.classList.add("zoomIn");
-
+ 
 discordArrow.classList.remove("rotate");
 kogamaArrow.classList.remove("rotate");
-
+ 
 box.innerHTML='✔';
-
+ 
 }else{
-
+ 
 left.classList.remove("zoomIn");
 right.classList.remove("zoomIn");
-
+ 
 left.classList.add("zoomOut");
 right.classList.add("zoomOut");
-
+ 
 discord.style.display="none";
 kogama.style.display="none";
-
+ 
 discordArrow.classList.remove("rotate");
 kogamaArrow.classList.remove("rotate");
-
+ 
 setTimeout(()=>{
 left.style.display="none";
 right.style.display="none";
 },1000);
-
+ 
 box.innerHTML='';
-
+ 
 }
-
+ 
 }
-
+ 
 function toggleDiscord() {
-
+ 
 const box=document.getElementById("discordBox");
 const arrow=document.getElementById("discordArrow");
-
+ 
 if(box.style.display==="flex"){
 box.style.display="none";
 }else{
 box.style.display="flex";
 }
-
+ 
 arrow.classList.toggle("rotate");
-
+ 
 }
-
+ 
 function toggleKogama() {
-
+ 
 const box=document.getElementById("kogamaBox");
 const arrow=document.getElementById("kogamaArrow");
-
+ 
 if(box.style.display==="flex"){
 box.style.display="none";
 }else{
 box.style.display="flex";
 }
-
+ 
 arrow.classList.toggle("rotate");
-
+ 
 }
-
+ 
 function scrollToVideo() {
   const video = document.getElementById('videoSection');
   video.scrollIntoView({behavior: 'smooth'});
 }
-
+ 
 </script>
-
+ 
 </body>
 </html>
